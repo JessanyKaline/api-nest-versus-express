@@ -1,41 +1,72 @@
-# api-nest-versus-express
+# API Nest Versus Express
 
-The main purpose of this repository is to build a project with different frameworks: Express versus Nest.js. 
+The main purpose of this repository is to build a project using two different frameworks: **Express** and **Nest.js**. This allows for a comparison of architecture, implementation, and development practices.
 
-# Getting Started
+---
 
-- Install Node
-- Install NPM
+## Project Requirements
 
-- Clone the repository
-```
-git clone https://github.com/JessanyKaline/api-nest-versus-express
-```
-- Install dependencies
-```
-cd <framework> //express or nest
-npm install
-```
+The goal of the project is to create a REST API that allows:
 
-- If Express
-```
-npm run dev
-```
+- Create, list, update, and delete **orders** and **products**.
+- Validate stock availability before creating an order.
+- Calculate the total value of an order.
+- Implement robust error handling.
+- Use a database (**MongoDB**) to persist data.
+- Implement unit tests
 
-- If Nest
-```
-npm run start:dev
-```
+---
 
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+- **Node.js**
+- **NPM**
+- **Docker** (optional, for containerization)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JessanyKaline/api-nest-versus-express
+
+2. Navigate to the desired framework folder:
+   ```bash
+   cd <framework> # Replace <framework> with 'express' or 'nest'
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the application:
+   
+   - For Nest
+     ```bash
+     npm run start:dev
+     ```
+   - For Express
+     ```bash
+     npm run dev
+     ```
 ## Docker
-A docker-compose file has been added to the project with a MongoDB.
+A docker-compose.yml file is included in the project to simplify setup with MongoDB.
 
-It is as easy as go to the project folder and execute the command 'docker-compose up' once you have Docker installed, and both the MongoDB server and client will be running. There one docker-composer.yml for each frameworks (express / nest).
+1. Navigate to the project folder.
+2. Run the following command:
+   ```bash
+    docker-compose up
+This will start both the MongoDB server and its client.
 
+Note: Each framework (express and nest) has its own docker-compose.yml file.
 
-# EXPRESS
-The project is to build with Clean Architecture
+## Project Structure
 
+### Express
+
+The Express project follows the **Clean Architecture** principles, organized as follows:
+
+```plaintext
 src/
 ├── domain/
 │   ├── dtos/
@@ -58,16 +89,16 @@ src/
 │   │   │   ├── DeleteOrder.useCase.ts
 │   │   │   ├── GetOrderById.useCase.ts
 │   │   │   ├── ListOrders.useCase.ts
-│   │   │   ├── UpdateOrder.useCase.ts
+│   │   │   └── UpdateOrder.useCase.ts
 │   │   ├── product/
 │   │   │   ├── CreateProduct.useCase.ts
 │   │   │   ├── DeleteProduct.useCase.ts
 │   │   │   ├── GetProductById.useCase.ts
 │   │   │   ├── ListProducts.useCase.ts
-│   │   │   ├── UpdateProduct.useCase.ts
+│   │   │   └── UpdateProduct.useCase.ts
 │   └── interfaces/
 │       └── controllers/
-│           └── OrderController.ts
+│           ├── OrderController.ts
 │           └── ProductController.ts
 ├── infrastructure/
 │   ├── database/
@@ -76,39 +107,50 @@ src/
 │   │   │   └── repositories/
 │   ├── http/
 │   │   ├── express/
-│          ├── routes/
-│              └── orderRoutes.ts
-|              └── productRoutes.ts
+│   │   │   ├── routes/
+│   │   │       ├── orderRoutes.ts
+│   │   │       └── productRoutes.ts
 └── main/
     └── server.ts
+```
 
-# NEST.JS
+### Nest.js
 
-The project is to build with Nest Architecture
+The Nest.js project follows the Nest.js Architecture, structured as:
 
+```plaintext
 src/
 ├── orders/
 │   ├── dto/
 │   │   ├── order.dto.ts
 │   ├── orders.controller.spec.ts
 │   ├── orders.controller.ts
-│   └── orders.module.ts
-│   └── orders.service.spec.ts
+│   ├── orders.module.ts
+│   ├── orders.service.spec.ts
 │   └── orders.service.ts
 ├── products/
 │   ├── dto/
 │   │   ├── product.dto.ts
 │   ├── products.controller.spec.ts
 │   ├── products.controller.ts
-│   └── products.module.ts
-│   └── products.service.spec.ts
+│   ├── products.module.ts
+│   ├── products.service.spec.ts
 │   └── products.service.ts
 ├── schemas/
 │   ├── order.schema.ts
-│   ├── products.schema.ts
+│   ├── product.schema.ts
 ├── utils/
 │   ├── object-id.utils.ts
-└── app.controller.ts
-└── app.module.ts
+├── app.controller.ts
+├── app.module.ts
 └── main.ts
+```
+
+Contribution
+
+Feel free to fork this repository, make changes, and submit a pull request. Contributions are always welcome!
+
+
+
+
    
